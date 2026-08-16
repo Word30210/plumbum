@@ -1,0 +1,130 @@
+# types
+- name: T-maintenance
+  color: "00AAFF"
+  description: A task that has no noticeable user-facing effect. Code cleanup, small refactors, etc.
+
+- name: T-feature
+  color: "00AAFF"
+  description: A request for a new feature.
+  aliases: [enhancement]
+
+- name: T-improvement
+  color: "00AAFF"
+  description: An improvement or change to an existing feature.
+
+- name: T-optimization
+  color: "00AAFF"
+  description: An optimization to an existing feature.
+
+- name: T-bug
+  color: "00AAFF"
+  description: Something is not working as it should.
+
+# statuses
+- name: S-waiting-for-review
+  color: "00FFAA"
+  description: The PR is ready for review.
+
+- name: S-waiting-for-merge
+  color: "00FFAA"
+  description: The PR has been approved and is waiting for a merge.
+
+- name: S-ready
+  color: "00FFAA"
+  description: This issue is ready to be worked on
+
+- name: S-in-progress
+  color: "00FFAA"
+  description: This issue is being worked on.
+
+- name: S-blocked
+  color: "00FFAA"
+  description: This issue cannot process until a blocker is resolved.
+
+- name: S-missing-information
+  color: "00FFAA"
+  description: This issue needs additional details to proceed.
+
+- name: S-needs-investigation
+  color: "00FFAA"
+  description: This issue is blocked from completion till the bug has been reproduced.
+
+- name: S-needs-testing
+  color: "00FFAA"
+  description: The PR needs to be tested.
+
+- name: S-needs-discussion
+  color: "00FFAA"
+  description: This issue needs to be discussed by its related group.
+
+- name: S-not-planned
+  color: "00FFAA"
+  description: This feature is not planned.
+
+# priorities
+- name: P-low
+  color: "FFAA00"
+  description: Minor issue or cosmetic issue. Most users would not even notice.
+
+- name: P-normal
+  color: "FFAA00"
+  description: An issue that is causing a noticeable impact, but can be worked around.
+
+- name: P-high
+  color: "FFAA00"
+  description: This issue has to be fixed ASAP. For the owning team, nothing else should be worked on.
+
+# difficulties
+- name: D-easy
+  color: "FF00AA"
+  description: Achievable by a single junior developer with a bit of guidance.
+
+- name: D-normal
+  color: "FF00AA"
+  description: Achievable by an reasonable experienced developer.
+
+- name: D-hard
+  color: "FF00AA"
+  description: Achievable, but may require efforts from multiple experienced developers.
+
+# sizes
+- name: size/XS
+  color: "3CBF00"
+  aliases: [size-XS]
+
+- name: size/S
+  color: "5D9800"
+  aliases: [size-S]
+
+- name: size/M
+  color: "7F7200"
+  aliases: [size-M]
+
+- name: size/L
+  color: "A14C00"
+  aliases: [size-L]
+
+- name: size/XL
+  color: "C32500"
+  aliases: [size-XL]
+
+- name: size/XXL
+  color: "E50000"
+  aliases: [size-XXL]
+
+# etc.
+- name: documentation
+  color: "008080"
+  description: Improvement or additions to documentation.
+
+- name: dependencies
+  color: "808000"
+  description: Pull requests that update a dependency file.
+
+- name: github-actions
+  color: "303030"
+  description: Pull requests that update Github Actions code
+
+- name: tracking
+  color: "D93F00"
+  description: Reminder or collection of issues (typically created by a developer)
