@@ -29,6 +29,23 @@ fn init_creates_skeleton() {
 }
 
 #[test]
+fn init_uses_dir_name_when_name_omitted() {
+    let temp = TempDir::new().unwrap();
+    let os_name = temp.file_name().unwrap();
+    let name = os_name.to_str().unwrap();
+
+    Command::cargo_bin("plumbum")
+        .unwrap()
+        .current_dir(&temp)
+        .arg("init")
+        .assert()
+        .success();
+
+    temp.child("plumbum.toml")
+        .assert(predicate::str::contains(format!("name = \"{name}\"")));
+}
+
+#[test]
 fn init_fails_in_a_plumbum_project() {
     let temp = TempDir::new().unwrap();
     temp.child("plumbum.toml").write_str("hi").unwrap();

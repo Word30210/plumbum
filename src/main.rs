@@ -49,9 +49,15 @@ fn init(name: Option<String>, scope: Option<String>) -> anyhow::Result<()> {
         std::fs::create_dir_all(dir).with_context(|| format!("creating directory {dir}"))?;
     }
 
+    let default_name = std::env::current_dir()
+        .ok()
+        .and_then(|p| p.file_name().map(|n| n.to_string_lossy().into_owned()));
+
     let manifest = Manifest {
         project: Project {
-            name: name.unwrap_or_else(|| "unnamed".to_string()),
+            name: name
+                .or(default_name)
+                .unwrap_or_else(|| "unnamed".to_string()),
             scope: scope.unwrap_or_else(|| "unknown".to_string()),
             version: "0.1.0".to_string(),
         },
