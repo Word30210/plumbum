@@ -62,8 +62,8 @@ fn init(name: Option<String>, scope: Option<String>) -> anyhow::Result<()> {
             version: "0.1.0".to_string(),
         },
     };
-    let toml = toml::to_string(&manifest).expect("serialize manifest");
-    std::fs::write("plumbum.toml", toml).expect("write plumbum.toml");
+    let toml = toml::to_string(&manifest).context("serialize manifest")?;
+    std::fs::write("plumbum.toml", toml).context("write plumbum.toml")?;
 
     println!("Initialized Plumbum project");
 
