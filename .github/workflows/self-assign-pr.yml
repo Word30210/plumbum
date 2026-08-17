@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: read
-  issues: write
+  pull-requests: write
 
 jobs:
   self-assign:
@@ -21,7 +21,7 @@ jobs:
             const login = context.payload.pull_request.user.login;
             const issueNumber = context.payload.pull_request.number;
 
-            if (login.endsWith("[bot]")) {
+            if (context.payload.pull_request.user.type === "Bot") {
               core.info(`Skipping self-assignment for bot author @${login} on PR #${issueNumber}`);
               return;
             }
