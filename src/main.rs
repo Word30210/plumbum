@@ -1,4 +1,8 @@
-use clap::{Parser,Subcommand};
+mod manifest;
+
+use manifest::{Manifest, Project};
+
+use clap::{Parser, Subcommand};
 
 #[derive(Parser)]
 #[command(name = "plumbum", version, about)]
@@ -25,7 +29,17 @@ fn main() {
 
     match cli.command {
         Command::Init { name, scope } => {
-            println!("init: name={name:?}, scope={scope:?}")
+            let manifest = Manifest {
+                project: Project {
+                    name: name.unwrap_or_else(|| "unnamed".to_string()),
+                    scope: scope.unwrap_or_else(|| "unknown".to_string()),
+                    version: "0.1.0".to_string(),
+                },
+            };
+
+            let toml = toml::to_string(&manifest).expect("serialize manifest");
+            std::fs::write("plumbum.toml", toml).expect("write plumbum.toml");
+            println!("created plumbum.toml");
         }
     }
 }
