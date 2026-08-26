@@ -87,7 +87,9 @@ impl InitCommand {
 
         let scope = match scope {
             Some(scope) => scope,
-            None if no_input => anyhow::bail!("--scope is required when there is no interactive terminal (or with --no-input)"),
+            None if no_input => anyhow::bail!(
+                "--scope is required when there is no interactive terminal (or with --no-input)"
+            ),
             None => Text::new("what is the name of the pesde scope?")
                 .with_validator(|input: &str| {
                     Ok(match validate_scope(input) {
