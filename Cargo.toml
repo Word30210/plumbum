@@ -2,10 +2,15 @@
 name = "plumbum"
 version = "0.1.0"
 edition = "2024"
+description = "Scaffolding + workflow-integrated CLI for Roblox multi-place game projects"
+repository = "https://github.com/Word30210/plumbum"
+license = "MIT"
+publish = false
 
 [dependencies]
 anyhow = "1.0.104"
 clap = { version = "4", features = ["derive"] }
+inquire = "0.9.4"
 serde = { version = "1.0.229", features = ["derive"] }
 toml = "1.1.4"
 
