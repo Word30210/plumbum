@@ -12,9 +12,8 @@ struct Cli {
 }
 
 fn run() -> anyhow::Result<()> {
-    let cwd = std::env::current_dir().context("failed to get current working directory")?;
-
     let cli = Cli::parse();
+    let cwd = std::env::current_dir().context("failed to get current working directory")?;
     cli.subcommand.run(cwd)
 }
 
