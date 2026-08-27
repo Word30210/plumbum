@@ -105,7 +105,8 @@ mod pty {
         // Inquire keeps the previous input when re-prompting; clear it with
         // enough backspaces and then supply a valid scope.
         // "INVALID!" is 8 characters; send a few extra to be safe.
-        p.send("\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f").expect("backspace to clear");
+        p.send("\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f\x7f")
+            .expect("backspace to clear");
         p.send_line("acme").expect("send valid scope");
 
         // Accept the default tool-manager.
@@ -137,7 +138,6 @@ mod pty {
         // The process should terminate (EOF on the PTY side).
         p.exp_eof().expect("process terminates after Ctrl-C");
 
-        dir.child("plumbum.toml")
-            .assert(predicate::path::missing());
+        dir.child("plumbum.toml").assert(predicate::path::missing());
     }
 }
